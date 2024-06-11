@@ -1,0 +1,16 @@
+@import "./../../styles/colors.scss";
+
+#searchbar {
+    padding: 25px 25px 25px 100px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 100px;
+    border: 0;
+    background: url('../../assets/ic_busca.svg') no-repeat 30px center;
+    background-color: $salmon;
+    font-size: 20px;
+    color: $red;
+    outline: none;
+    box-sizing: border-box;
+}

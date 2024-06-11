@@ -1,0 +1,28 @@
+@import "./../../styles/colors.scss";
+
+#header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px 0;
+}
+
+.logo {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h1 {
+        color: $black ;
+    }
+    p {
+        color: $gray;
+    }
+}
