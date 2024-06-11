@@ -34,7 +34,7 @@ export const fetchCharacters = createAsyncThunk(
 
     return toast.promise(fetchCharactersApi(state.characters.offset, state.characters.limit, state.characters.search, state.characters.sortOrder), {
       loading: 'Estamos buscando os heróis para essa missão', 
-      success: 'Sua lista de heróis está pronta', 
+      success: 'Sua lista de heróis está pronta' , 
       error: 'Houve um erro ao tentar carregar seus super heróis',
     }).then(response => ({
       characters: response.data.data.results,

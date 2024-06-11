@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import Logo from "./../../assets/logo.svg";
 import "./style.scss";
@@ -7,7 +8,9 @@ const Header = () => {
     return (
         <>
             <div id="header" className="container">
-                <img src={Logo} alt="Marvel Search Heroes" className="logo" />
+                <Link to={`/`}>
+                    <img src={Logo} alt="Marvel Search Heroes" className="logo" />
+                </Link>
 
                 <div className="header-text">
                     <h1>EXPLORE O UNIVERSO</h1>

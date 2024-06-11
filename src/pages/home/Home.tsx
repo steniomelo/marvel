@@ -9,24 +9,28 @@ import './style.scss';
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
   const characters = useSelector((state: RootState) => state.characters.filteredCharacters);
-  const { offset, limit, charactersTotal } = useSelector((state: RootState) => state.characters);
+  const { offset, limit, charactersTotal, showFavorites } = useSelector((state: RootState) => state.characters);
 
   useEffect(() => {
+    console.log('fetchCharacters');
     dispatch(fetchCharacters());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div id="page-home" className='container'>
       <CharacterListHeader />
       <CharacterList characters={characters} />
-      <div className='pagination'>
-        <button onClick={() => dispatch(decrementOffset())} disabled={offset === 0} className="btn">
-          Página anterior
-        </button>
-        <button onClick={() => dispatch(incrementOffset())} disabled={offset + limit >= charactersTotal} className="btn">
-          Próxima página
-        </button>
-      </div>
+
+      {(!showFavorites && charactersTotal > limit) && (
+        <div className='pagination'>
+          <button onClick={() => dispatch(decrementOffset())} disabled={offset === 0} className="btn">
+            Página anterior
+          </button>
+          <button onClick={() => dispatch(incrementOffset())} disabled={offset + limit >= charactersTotal} className="btn">
+            Próxima página
+          </button>
+        </div>
+      )}
     </div>
   );
 };

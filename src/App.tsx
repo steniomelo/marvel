@@ -5,6 +5,7 @@ import Home from './pages/home/Home';
 import CharacterDetail from './pages/CharacterDetail';
 import Header from './components/Header/Header';
 import { Toaster } from 'react-hot-toast';
+import Footer from 'components/Footer/Footer';
 
 const App = () => {
   return (
@@ -21,10 +22,11 @@ const App = () => {
 
       <Router>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/character/:id" element={<CharacterDetail />} />
-        </Routes>
+          <Routes>
+            <Route index={true} path="/" element={<Home />} />
+            <Route path="/heroi/:id" element={<CharacterDetail />} />
+          </Routes>
+        <Footer />
       </Router>
     </Provider>
   );
