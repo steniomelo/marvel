@@ -48,9 +48,7 @@ const charactersSlice = createSlice({
       state.showFavorites = !state.showFavorites;
       if (state.showFavorites) {
         const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-        state.filteredCharacters = state.characters.filter(character =>
-          favorites.some((fav: Character) => fav.id === character.id)
-        );
+        state.filteredCharacters = favorites;
       } else {
         state.filteredCharacters = state.characters;
       }
@@ -63,8 +61,9 @@ const charactersSlice = createSlice({
     builder
       .addCase(fetchCharacters.pending, (state) => {
         state.status = 'loading';
+        state.showFavorites = false;
       })
-      .addCase(fetchCharacters.fulfilled, (state, action: PayloadAction < { characters: Character[], total: number} >) => {
+      .addCase(fetchCharacters.fulfilled, (state, action: PayloadAction <{characters: Character[], total: number}>) => {
         state.status = 'idle';
         state.characters = action.payload.characters;
         state.filteredCharacters = action.payload.characters;

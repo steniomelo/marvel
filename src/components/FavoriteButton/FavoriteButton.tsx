@@ -2,7 +2,8 @@ import { Character } from "../../types/character";
 import { RootState } from '../../reducers/store';
 import { toggleFavorite } from '../../reducers/favorites';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useEffect, useState } from "react";
+import './style.scss';
 interface FavoriteButtonProps {
   character: Character
 }
@@ -10,11 +11,15 @@ interface FavoriteButtonProps {
 const FavoriteButton = ({ character }: FavoriteButtonProps) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state: RootState) => state.favorites.favorites);
-  const isFavorite = favorites.some((fav) => fav.id === character.id);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsFavorite(favorites.some((fav) => fav.id === character.id));
+  }, [character, favorites]);
 
   return (
     <>
-      <button onClick={() => dispatch(toggleFavorite(character))}>{isFavorite ? 'Desfavoritar' : 'Favoritar'}</button>
+      <button onClick={() => dispatch(toggleFavorite(character))} className={`favorite-button ${isFavorite ? '--active' : '--inactive'}`}></button>
     </>
   );
 };

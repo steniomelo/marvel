@@ -12,8 +12,11 @@ const CharacterCard = ({ character }: CharacterCardProps) => (
     <Link to={`/character/${character.id}`}>
       <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} className='character-card-img' />
     </Link>
-    <h3>{character.name}</h3>
-    <FavoriteButton character={character} />
+
+    <div className="character-card-title">
+      <h3 className="character-card-name">{character.name}</h3>
+      <FavoriteButton character={character} />
+    </div>
   </div>
 );
 
