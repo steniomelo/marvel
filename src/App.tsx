@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers/store';
 import Home from './pages/home/Home';
-import CharacterDetail from './pages/CharacterDetail';
+import CharacterDetail from './pages/characterdetail/CharacterDetail';
 import Header from './components/Header/Header';
 import { Toaster } from 'react-hot-toast';
 import Footer from 'components/Footer/Footer';

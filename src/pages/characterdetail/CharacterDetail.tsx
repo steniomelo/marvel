@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchCharacterDetails, fetchCharacterComics } from '../services/api';
-import { Character } from '../types/character';
-import { Comic } from '../types/comic';
-import FavoriteButton from '../components/FavoriteButton/FavoriteButton';
+import { fetchCharacterDetails, fetchCharacterComics } from '../../services/api';
+import { Character } from '../../types/character';
+import { Comic } from '../../types/comic';
+import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
 
 const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();

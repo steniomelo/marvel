@@ -1,28 +1,71 @@
 @import "./../../styles/colors.scss";
 
 #header {
-    text-align: center;
+
     display: flex;
-    flex-direction: column;
-    gap: 50px;
-    padding: 50px 0;
+    flex-direction: row;
+    text-align: left;
+    gap: 80px;
+    align-items: center;
+    padding: 40px 0;
+
+    &.home {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding: 50px 0;
+    }
+}
+
+.header-logo {
+    display: flex;
+    text-decoration: none;
+    flex: 1 0 auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo-text {
+    text-decoration: none;
+    font-weight: 600;
+    color: $black;
 }
 
 .logo {
     text-align: center;
     display: block;
     margin: 0 auto;
+    width: 100px;
 }
 
 .header-text {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: none;
+}
 
-    h1 {
-        color: $black ;
+.home {
+    .header-text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h1 {
+            color: $black ;
+        }
+        p {
+            color: $gray;
+        }
     }
-    p {
-        color: $gray;
+
+    .header-logo {
+        align-items: end;
+    }
+
+    .logo {
+        width: 220px;
+    }
+
+    .header-logo-text {
+        margin-bottom: 5px;
     }
 }

@@ -13,7 +13,7 @@ const SearchBar = () => {
   useEffect(() => {
     const delay = setTimeout(() => {
       dispatch(setSearch(searchTerm))
-      //navigate("/");
+      navigate("/");
     }, 500);
     return () => clearTimeout(delay);
   }, [searchTerm, dispatch]);

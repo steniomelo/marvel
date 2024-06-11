@@ -1,16 +1,38 @@
 @import "./../../styles/colors.scss";
 
 #searchbar {
-    padding: 25px 25px 25px 100px;
+    padding: 10px 10px 10px 70px;
     display: block;
     width: 90%;
+    height: 50px;
     margin: 0 auto;
     border-radius: 100px;
     border: 0;
     background: url('../../assets/ic_busca.svg') no-repeat 30px center;
+    background-size: 20px 20px;
     background-color: $salmon;
-    font-size: 20px;
+    font-size: 14px;
     color: $red;
     outline: none;
     box-sizing: border-box;
 }
+
+
+.home {
+    #searchbar {
+        padding: 25px 25px 25px 100px;
+        display: block;
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 100px;
+        border: 0;
+        background: url('../../assets/ic_busca.svg') no-repeat 30px center;
+        background-color: $salmon;
+        font-size: 20px;
+        color: $red;
+        outline: none;
+        box-sizing: border-box;
+    }
+}
+
