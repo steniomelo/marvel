@@ -17,10 +17,12 @@ const FavoriteButton = ({ character }: FavoriteButtonProps) => {
     setIsFavorite(favorites.some((fav) => fav.id === character.id));
   }, [character, favorites]);
 
+  const handleButtonClick = () => {
+    dispatch(toggleFavorite(character));
+  }
+
   return (
-    <>
-      <button onClick={() => dispatch(toggleFavorite(character))} className={`favorite-button ${isFavorite ? '--active' : '--inactive'}`}></button>
-    </>
+      <button onClick={() => handleButtonClick()} className={`favorite-button ${isFavorite ? '--active' : '--inactive'}`}></button>
   );
 };
 

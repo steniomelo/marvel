@@ -1,39 +1,36 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Character } from '../types/character';
-
+import toast from 'react-hot-toast';
 interface FavoritesState {
   favorites: Character[];
+  favoritesLimit: number;
 }
 
 const initialState: FavoritesState = {
   favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
+  favoritesLimit: 5
 };
 
 const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    addFavorite: (state, action: PayloadAction<Character>) => {
-      if (state.favorites.length < 5 && !state.favorites.some(fav => fav.id === action.payload.id)) {
-        state.favorites.push(action.payload);
-        localStorage.setItem('favorites', JSON.stringify(state.favorites));
-      }
-    },
-    removeFavorite: (state, action: PayloadAction<number>) => {
-      state.favorites = state.favorites.filter(fav => fav.id !== action.payload);
-      localStorage.setItem('favorites', JSON.stringify(state.favorites));
-    },
     toggleFavorite: (state, action: PayloadAction<Character>) => {
       const existingFavorite = state.favorites.find(fav => fav.id === action.payload.id);
       if (existingFavorite) {
-        state.favorites = state.favorites.filter(fav => fav.id !== action.payload.id);
-      } else if (state.favorites.length < 5) {
-        state.favorites.push(action.payload);
+          state.favorites = state.favorites.filter(fav => fav.id !== action.payload.id);
+          toast.success(`${action.payload.name} foi removido com sucesso aos favoritos`);
+        
+        } else if (state.favorites.length < state.favoritesLimit) {
+          state.favorites.push(action.payload);
+          toast(`${action.payload.name} foi removido com sucesso aos favoritos`, { icon: "❤️" });
+      } else if(state.favorites.length === state.favoritesLimit) {
+        toast.error(`Você atingiu o limite de ${state.favoritesLimit} personagens favoritos`);
       }
       localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
   },
 });
 
-export const { addFavorite, removeFavorite, toggleFavorite } = favoritesSlice.actions;
+export const { toggleFavorite } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

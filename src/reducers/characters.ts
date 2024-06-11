@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { fetchCharacters as fetchCharactersApi } from '../services/api';
 import { Character } from '../types/character';
+import toast from 'react-hot-toast';
 
 interface CharactersState {
   characters: Character[];
@@ -10,6 +11,8 @@ interface CharactersState {
   status: 'idle' | 'loading' | 'failed';
   filteredCharacters: Character[];
   showFavorites: boolean;
+  offset: number;
+  limit: number;
 }
 
 const initialState: CharactersState = {
@@ -20,17 +23,24 @@ const initialState: CharactersState = {
   status: 'idle',
   filteredCharacters: [],
   showFavorites: false,
+  offset: 0,
+  limit: 20,
 };
 
 export const fetchCharacters = createAsyncThunk(
   'characters/fetchCharacters',
   async (_, { getState }) => {
     const state = getState() as { characters: CharactersState };
-    const response = await fetchCharactersApi(0, 20, state.characters.search, state.characters.sortOrder);
-    return {
+
+    return toast.promise(fetchCharactersApi(state.characters.offset, state.characters.limit, state.characters.search, state.characters.sortOrder), {
+      loading: 'Estamos buscando os heróis para essa missão', 
+      success: 'Sua lista de heróis está pronta', 
+      error: 'Houve um erro ao tentar carregar seus super heróis',
+    }).then(response => ({
       characters: response.data.data.results,
       total: response.data.data.total,
-    };
+    }));
+
   }
 );
 
@@ -55,7 +65,17 @@ const charactersSlice = createSlice({
     },
     setFilteredCharacters: (state, action: PayloadAction<Character[]>) => {
       state.filteredCharacters = action.payload;
-    }
+    },
+    incrementOffset: (state) => {
+      state.offset += state.limit;
+      console.log(state.offset);
+      },
+      decrementOffset: (state) => {
+        if (state.offset >= state.limit) {
+          state.offset -= state.limit;
+        console.log(state.offset);
+          }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -75,5 +95,6 @@ const charactersSlice = createSlice({
   },
 });
 
-export const { setSearch, setSortOrder, toggleShowFavorites, setFilteredCharacters } = charactersSlice.actions;
+export const { setSearch, setSortOrder, toggleShowFavorites, setFilteredCharacters, incrementOffset,
+  decrementOffset } = charactersSlice.actions;
 export default charactersSlice.reducer;

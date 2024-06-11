@@ -4,10 +4,20 @@ import store from './reducers/store';
 import Home from './pages/home/Home';
 import CharacterDetail from './pages/CharacterDetail';
 import Header from './components/Header/Header';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   return (
     <Provider store={store}>
+      <Toaster position="bottom-center"
+        toastOptions={{
+          error: {
+            style: {
+              background: 'red',
+              color: 'white'
+            },
+          },
+        }} />
 
       <Router>
         <Header />
