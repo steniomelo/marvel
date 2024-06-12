@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <>
             <div id="footer">
-                Marvel - Search Heroes
+                Marvel - Search Heroes 😉 By: Stênio Melo
             </div>
         </>
 

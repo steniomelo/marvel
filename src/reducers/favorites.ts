@@ -19,13 +19,13 @@ const favoritesSlice = createSlice({
       const existingFavorite = state.favorites.find(fav => fav.id === action.payload.id);
       if (existingFavorite) {
           state.favorites = state.favorites.filter(fav => fav.id !== action.payload.id);
-          toast.success(`${action.payload.name} foi removido com sucesso aos favoritos`);
+          toast.success(`"${action.payload.name}" foi removido dos seus favoritos`);
         
         } else if (state.favorites.length < state.favoritesLimit) {
           state.favorites.push(action.payload);
-          toast(`${action.payload.name} foi removido com sucesso aos favoritos`, { icon: "❤️" });
+          toast(`"${action.payload.name}" foi adicionado a sua lista de heróis favoritos`, { icon: "❤️" });
       } else if(state.favorites.length === state.favoritesLimit) {
-        toast.error(`Você atingiu o limite de ${state.favoritesLimit} personagens favoritos`);
+        toast.error(`Você atingiu o limite de ${state.favoritesLimit} heróis favoritos`);
       }
       localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },

@@ -2,10 +2,16 @@ import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import Logo from "./../../assets/logo.svg";
 import "./style.scss";
+import { useEffect } from "react";
 
 const Header = () => {
     const location = useLocation();
     const { pathname } = location;
+
+    useEffect(() => {
+        (pathname === '/') ? document.body.classList.remove('background-inner') : document.body.classList.add('background-inner');
+
+    }, [location, pathname]);
 
     return (
         <>

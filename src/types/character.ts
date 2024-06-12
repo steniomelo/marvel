@@ -1,3 +1,4 @@
+import { Comics } from "./comic";
 import { Image } from "./thumbnail";
 
 export interface Character {
@@ -11,4 +12,6 @@ export interface Character {
     url: string;
   }[];
   thumbnail: Image;
+  comics: Comics;
+  events: Comics;
 }
