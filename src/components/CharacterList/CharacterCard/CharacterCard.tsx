@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { Character } from '../../../types/character';
-import FavoriteButton from '../../FavoriteButton/FavoriteButton';
-import './style.scss';
+import { Link } from "react-router-dom";
+import { Character } from "../../../types/character";
+import FavoriteButton from "../../FavoriteButton/FavoriteButton";
+import "./style.scss";
 
 interface CharacterCardProps {
   character: Character;
@@ -10,7 +10,11 @@ interface CharacterCardProps {
 const CharacterCard = ({ character }: CharacterCardProps) => (
   <div className="character-card">
     <Link to={`/heroi/${character.id}`}>
-      <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} className='character-card-img' />
+      <img
+        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+        alt={character.name}
+        className="character-card-img"
+      />
     </Link>
 
     <div className="character-card-title">

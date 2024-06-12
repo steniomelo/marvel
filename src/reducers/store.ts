@@ -1,7 +1,16 @@
-import { combineReducers, configureStore, createListenerMiddleware } from '@reduxjs/toolkit';
-import favorites from './favorites';
-import characters, { setSearch, setSortOrder, incrementOffset, decrementOffset, fetchCharacters } from './characters';
-
+import {
+  combineReducers,
+  configureStore,
+  createListenerMiddleware,
+} from "@reduxjs/toolkit";
+import favorites from "./favorites";
+import characters, {
+  setSearch,
+  setSortOrder,
+  incrementOffset,
+  decrementOffset,
+  fetchCharacters,
+} from "./characters";
 
 const listenerMiddleware = createListenerMiddleware();
 
@@ -33,12 +42,13 @@ listenerMiddleware.startListening({
 
 const reducers = combineReducers({
   favorites: favorites,
-  characters: characters
-})
+  characters: characters,
+});
 
 const store = configureStore({
   reducer: reducers,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(listenerMiddleware.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(listenerMiddleware.middleware),
 });
 
 export default store;

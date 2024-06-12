@@ -1,14 +1,14 @@
 .character-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 40px;
-    grid-row-gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
 }
 
 @media screen and (max-width: 700px) {
-    .character-list {
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 40px;
-        grid-row-gap: 40px;
-    }
+  .character-list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+  }
 }

@@ -1,46 +1,45 @@
-@import '../../styles/colors';
+@import "../../styles/colors";
 
 #sortby {
-    align-items: center;
-    display: flex;
-    gap: 15px;
+  align-items: center;
+  display: flex;
+  gap: 15px;
 }
 
 .sortby-text {
-    color: $red;
+  color: $red;
 }
 
 .sortby-button {
-    background: lighten($gray, 35%);
-    padding: 10px;
-    color: transparent;
-    border: 0;
-    border-radius: 20px;
-    width: 80px;
-    position: relative;
-    transition: all .2s ease-in-out;
-    cursor: pointer;
-    
-    &::after {
-        cursor: pointer;
-        content: "";
-        width: 20px;
-        height: 20px;
-        border-radius: 100%;
-        background-color: $red;
-        display: block;
-        position: relative;
-        left: calc(100% - 20px);
-        transition: all .2s ease-in-out;
-        box-shadow: 0 2px 10px rgba($red, .8);
-    }
+  background: lighten($gray, 35%);
+  padding: 10px;
+  color: transparent;
+  border: 0;
+  border-radius: 20px;
+  width: 80px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 
-    &.modified {
-       &::after {
-        left: 0;
-        background-color: $gray;
-        box-shadow: none;
-       } 
+  &::after {
+    cursor: pointer;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: $red;
+    display: block;
+    position: relative;
+    left: calc(100% - 20px);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 10px rgba($red, 0.8);
+  }
+
+  &.modified {
+    &::after {
+      left: 0;
+      background-color: $gray;
+      box-shadow: none;
     }
-    
+  }
 }

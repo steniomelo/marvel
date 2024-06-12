@@ -1,15 +1,15 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 #favorite-toggle {
-    color: $red;
-    background: url('../../assets/favorito_02.svg') no-repeat;
-    background-size: contain;
-    padding-left: 30px;
-    border: 0;
-    font-size: 14px;
-    cursor: pointer;
+  color: $red;
+  background: url("../../assets/favorito_02.svg") no-repeat;
+  background-size: contain;
+  padding-left: 30px;
+  border: 0;
+  font-size: 14px;
+  cursor: pointer;
 
-    &.--active {
-        background-image: url('../../assets/favorito_01.svg');
-    }
+  &.--active {
+    background-image: url("../../assets/favorito_01.svg");
+  }
 }

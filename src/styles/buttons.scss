@@ -1,19 +1,19 @@
-@import './colors';
+@import "./colors";
 
 .btn {
-    background-color: $red;
-    border: 0;
-    padding: 15px 25px;
-    color: white;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+  background-color: $red;
+  border: 0;
+  padding: 15px 25px;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 
-    &:hover {
-        background-color: darken($red,15%);
-    }
+  &:hover {
+    background-color: darken($red, 15%);
+  }
 
-    &:disabled {
-        background-color: $gray;
-    }
+  &:disabled {
+    background-color: $gray;
+  }
 }

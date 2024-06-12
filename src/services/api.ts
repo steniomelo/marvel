@@ -1,14 +1,19 @@
-import axios from 'axios';
-var md5 = require('md5');
+import axios from "axios";
+var md5 = require("md5");
 
 const PUBLIC_KEY = process.env.REACT_APP_MARVEL_PUBLIC_KEY as string;
 const PRIVATE_KEY = process.env.REACT_APP_MARVEL_PRIVATE_KEY as string;
-const BASE_URL = 'https://gateway.marvel.com/v1/public';
+const BASE_URL = "https://gateway.marvel.com/v1/public";
 
 const timestamp = new Date().getTime();
 const hash = md5(timestamp + PRIVATE_KEY + PUBLIC_KEY).toString();
 
-export const fetchCharacters = (offset = 0, limit = 20, name = '', orderby = 'name') =>
+export const fetchCharacters = (
+  offset = 0,
+  limit = 20,
+  name = "",
+  orderby = "name"
+) =>
   axios.get(`${BASE_URL}/characters`, {
     params: {
       apikey: PUBLIC_KEY,
@@ -36,7 +41,7 @@ export const fetchCharacterComics = (characterId: number) =>
       apikey: PUBLIC_KEY,
       ts: timestamp,
       hash,
-      orderBy: '-onsaleDate',
+      orderBy: "-onsaleDate",
       limit: 10,
     },
   });

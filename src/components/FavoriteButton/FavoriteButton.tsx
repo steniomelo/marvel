@@ -1,16 +1,18 @@
 import { Character } from "../../types/character";
-import { RootState } from '../../reducers/store';
-import { toggleFavorite } from '../../reducers/favorites';
-import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from "../../reducers/store";
+import { toggleFavorite } from "../../reducers/favorites";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import './style.scss';
+import "./style.scss";
 interface FavoriteButtonProps {
-  character: Character
+  character: Character;
 }
 
 const FavoriteButton = ({ character }: FavoriteButtonProps) => {
   const dispatch = useDispatch();
-  const favorites = useSelector((state: RootState) => state.favorites.favorites);
+  const favorites = useSelector(
+    (state: RootState) => state.favorites.favorites
+  );
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   useEffect(() => {
@@ -19,10 +21,13 @@ const FavoriteButton = ({ character }: FavoriteButtonProps) => {
 
   const handleButtonClick = () => {
     dispatch(toggleFavorite(character));
-  }
+  };
 
   return (
-      <button onClick={() => handleButtonClick()} className={`favorite-button ${isFavorite ? '--active' : '--inactive'}`}></button>
+    <button
+      onClick={() => handleButtonClick()}
+      className={`favorite-button ${isFavorite ? "--active" : "--inactive"}`}
+    ></button>
   );
 };
 

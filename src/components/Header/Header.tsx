@@ -5,32 +5,38 @@ import "./style.scss";
 import { useEffect } from "react";
 
 const Header = () => {
-    const location = useLocation();
-    const { pathname } = location;
+  const location = useLocation();
+  const { pathname } = location;
 
-    useEffect(() => {
-        (pathname === '/') ? document.body.classList.remove('background-inner') : document.body.classList.add('background-inner');
+  useEffect(() => {
+    pathname === "/"
+      ? document.body.classList.remove("background-inner")
+      : document.body.classList.add("background-inner");
+  }, [location, pathname]);
 
-    }, [location, pathname]);
+  return (
+    <>
+      <div
+        id="header"
+        className={`container ${pathname === "/" ? "home" : ""}`}
+      >
+        <Link to={`/`} className="header-logo">
+          <img src={Logo} alt="Marvel Search Heroes" className="logo" />
+          <p className="header-logo-text">Search Heroes</p>
+        </Link>
 
-    return (
-        <>
-            <div id="header" className={`container ${pathname === '/' ? 'home' : ''}`}>
-                <Link to={`/`} className="header-logo">
-                    <img src={Logo} alt="Marvel Search Heroes" className="logo" />
-                    <p className="header-logo-text">Search Heroes</p>
-                </Link>
+        <div className="header-text">
+          <h1>EXPLORE O UNIVERSO</h1>
+          <p>
+            Mergulhe no domínio deslumbrante de todos os personagens clássicos
+            que você ama - e aqueles que você descobrirá em breve!
+          </p>
+        </div>
 
-                <div className="header-text">
-                    <h1>EXPLORE O UNIVERSO</h1>
-                    <p>Mergulhe no domínio deslumbrante de todos os personagens clássicos que você ama - e aqueles que você descobrirá em breve!</p>
-                </div>
-
-                <SearchBar />
-            </div>
-        </>
-
-    );
+        <SearchBar />
+      </div>
+    </>
+  );
 };
 
 export default Header;

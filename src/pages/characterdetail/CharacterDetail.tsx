@@ -1,16 +1,18 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchCharacterDetails, fetchCharacterComics } from '../../services/api';
-import { Character } from '../../types/character';
-import { Comic } from '../../types/comic';
-import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
-import IconComics from '../../assets/ic_quadrinhos.svg';
-import IconFilmes from '../../assets/ic_trailer.svg';
-import IconRating from '../../assets/avaliacao_on.svg';
-import './style.scss';
-
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import {
+  fetchCharacterDetails,
+  fetchCharacterComics,
+} from "../../services/api";
+import { Character } from "../../types/character";
+import { Comic } from "../../types/comic";
+import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import IconComics from "../../assets/ic_quadrinhos.svg";
+import IconFilmes from "../../assets/ic_trailer.svg";
+import IconRating from "../../assets/avaliacao_on.svg";
+import "./style.scss";
 
 const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,77 +23,77 @@ const CharacterDetail = () => {
   useEffect(() => {
     setLoading(true);
 
-    Promise.all([fetchCharacterDetails(Number(id)), fetchCharacterComics(Number(id))]).then((response) => {
+    Promise.all([
+      fetchCharacterDetails(Number(id)),
+      fetchCharacterComics(Number(id)),
+    ]).then((response) => {
       console.log(response);
       setCharacter(response[0].data.data.results[0]);
       setComics(response[1].data.data.results);
       setLoading(false);
     });
-
-
   }, [id]);
 
   const FormatDate = (date: string) => {
-    const formattedDate = format(new Date(date), "dd MMM yyyy", { locale: ptBR });
+    const formattedDate = format(new Date(date), "dd MMM yyyy", {
+      locale: ptBR,
+    });
     return formattedDate;
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       {loading && (
         <>
-          <div id='character-detail'>
-            <div className='detail-text'>
+          <div id="character-detail">
+            <div className="detail-text">
               <div className="character-header">
-                <div className='character-name skeleton'></div>   
+                <div className="character-name skeleton"></div>
               </div>
-              <p className='character-description'>
+              <p className="character-description">
                 <span className="skeleton"></span>
                 <span className="skeleton"></span>
                 <span className="skeleton"></span>
                 <span className="skeleton"></span>
                 <span className="skeleton"></span>
               </p>
-
             </div>
 
-            <div className='detail-image skeleton'></div>
-
+            <div className="detail-image skeleton"></div>
           </div>
-
-          
         </>
       )}
-      {(character && comics.length > 0) && (
+      {character && comics.length > 0 && (
         <>
-          <div id='character-detail'>
-            <div className='detail-text'>
+          <div id="character-detail">
+            <div className="detail-text">
               <div className="character-header">
-                <h1 className='character-name'>{character.name}
+                <h1 className="character-name">
+                  {character.name}
                   <span>{character.name}</span>
                 </h1>
                 <FavoriteButton character={character} />
               </div>
-              <p className='character-description'>{character.description}</p>
+              <p className="character-description">{character.description}</p>
 
               <div className="character-metas">
                 <div className="meta-comics character-meta">
                   <h5>Quadrinhos</h5>
-                  <div className='character-meta-icon'>
+                  <div className="character-meta-icon">
                     <img src={IconComics} alt="" />
                     {character.comics.available}
                   </div>
                 </div>
                 <div className="meta-movies character-meta">
                   <h5>Filmes</h5>
-                  <div className='character-meta-icon'>
+                  <div className="character-meta-icon">
                     <img src={IconFilmes} alt="" />
                     {character.events.available}
                   </div>
                 </div>
               </div>
 
-              <div className='character-rating'>
+              <div className="character-rating">
                 <span>Rating:</span>
                 <img src={IconRating} alt="star" />
                 <img src={IconRating} alt="star" />
@@ -106,19 +108,25 @@ const CharacterDetail = () => {
               </div>
             </div>
 
-            <div className='detail-image'>
-              <img src={`${character.thumbnail?.path}.${character.thumbnail?.extension}`} alt={character.name} />
+            <div className="detail-image">
+              <img
+                src={`${character.thumbnail?.path}.${character.thumbnail?.extension}`}
+                alt={character.name}
+              />
             </div>
-
           </div>
 
           <div id="character-comics">
             <h2 id="character-comics-title">Últimos lançamentos</h2>
-            <div className='comics-list'>
-              {comics.map(comic => (
-                <div className='comic' key={comic.id}>
-                  <img src={`${comic.thumbnail?.path}.${comic.thumbnail?.extension}`} alt={comic.title} className='comic-image' />
-                  <p className='comic-title'>{comic.title}</p>
+            <div className="comics-list">
+              {comics.map((comic) => (
+                <div className="comic" key={comic.id}>
+                  <img
+                    src={`${comic.thumbnail?.path}.${comic.thumbnail?.extension}`}
+                    alt={comic.title}
+                    className="comic-image"
+                  />
+                  <p className="comic-title">{comic.title}</p>
                 </div>
               ))}
             </div>
