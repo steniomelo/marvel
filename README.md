@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# Marvel Characters SPA
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é um Single Page Application (SPA) construído com React para listar e exibir detalhes dos personagens da Marvel. O projeto utiliza a API da Marvel para obter os dados dos personagens e é gerenciado com Redux para o estado global.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Listagem dos personagens com paginação
+- Busca e ordenação dos personagens por nome
+- Exibição dos detalhes dos personagens
+- Favoritar/Desfavoritar personagens
+- Exibir apenas personagens favoritos
+- Persistência dos personagens favoritos no LocalStorage
+- CI/CD na Vercel
 
-### `npm start`
+## Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- Redux
+- TypeScript
+- Axios
+- React Router
+- Marvel API
+- React Hot Toast
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Pré-requisitos
 
-### `npm test`
+- Node.js (versão 14 ou superior)
+- npm (versão 6 ou superior) ou yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Instalação
 
-### `npm run build`
+1. Clone o repositório:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/steniomelo/marvel.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navegue até o diretório do projeto:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd marvel
+```
 
-### `npm run eject`
+3. Instale as dependências:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm install
+# ou
+yarn install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Crie um arquivo .env na raiz do projeto e adicione sua chave pública e privada da API da Marvel:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+REACT_APP_MARVEL_PUBLIC_KEY=your_marvel_public_key
+REACT_APP_MARVEL_PRIVATE_KEY=your_marvel_private_key
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Executando o projeto
 
-## Learn More
+1. Para iniciar o servidor de desenvolvimento, execute:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+# ou
+yarn start
+```
