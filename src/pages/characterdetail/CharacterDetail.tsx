@@ -8,9 +8,9 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import IconComics from '../../assets/ic_quadrinhos.svg';
 import IconFilmes from '../../assets/ic_trailer.svg';
+import IconRating from '../../assets/avaliacao_on.svg';
 import './style.scss';
-import { useSelector } from 'react-redux';
-import { RootState } from 'reducers/store';
+
 
 const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,16 +18,8 @@ const CharacterDetail = () => {
   const [comics, setComics] = useState<Comic[]>([]);
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
     setLoading(true);
-    // fetchCharacterDetails(Number(id)).then(response => {
-    //   setCharacter(response.data.data.results[0]);
-    //   setLoading(false);
-    // });
-    // fetchCharacterComics(Number(id)).then(response => {
-    //   setComics(response.data.data.results);
-    // });
 
     Promise.all([fetchCharacterDetails(Number(id)), fetchCharacterComics(Number(id))]).then((response) => {
       console.log(response);
@@ -100,7 +92,12 @@ const CharacterDetail = () => {
               </div>
 
               <div className='character-rating'>
-                Rating: 
+                <span>Rating:</span>
+                <img src={IconRating} alt="star" />
+                <img src={IconRating} alt="star" />
+                <img src={IconRating} alt="star" />
+                <img src={IconRating} alt="star" />
+                <img src={IconRating} alt="star" />
               </div>
 
               <div className="character-last-comic">
